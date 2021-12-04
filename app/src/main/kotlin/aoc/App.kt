@@ -4,7 +4,12 @@
 package aoc
 
 fun main() {
-    val input = readInput("Day02")
-    println(Day02.part1(input))
-    println(Day02.part2(input))
+
+    val path = System.getProperty("user.dir")
+
+    println("Working Directory = $path")
+
+    val input = readInput("Day03")
+    println(Day03.part1(input))
+    println(Day03.part2(input))
 }

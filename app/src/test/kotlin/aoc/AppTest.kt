@@ -7,8 +7,7 @@ import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class AppTest {
-    @Test fun day01HasAPart1() {
-        val classUnderTest = Day01()
-        assertNotNull(Day01.part1, "day01 should have a part1")
+    @Test fun day01exists() {
+        assertNotNull(Day01, "day01 should exist")
     }
 }
