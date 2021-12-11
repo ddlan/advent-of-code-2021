@@ -3,7 +3,7 @@ package aoc
 class Day02 {
     companion object {
         enum class Direction {
-            forward, up, down
+            Forward, Up, Down
         }
 
         fun part1(input: List<String>): Int {
@@ -14,9 +14,9 @@ class Day02 {
                 val (dir, dist) = line.split(" ")
 
                 when (Direction.valueOf(dir)) {
-                    Direction.forward -> forwardDist += dist.toInt()
-                    Direction.up -> downwardDist -= dist.toInt()
-                    Direction.down -> downwardDist += dist.toInt()
+                    Direction.Forward -> forwardDist += dist.toInt()
+                    Direction.Up -> downwardDist -= dist.toInt()
+                    Direction.Down -> downwardDist += dist.toInt()
                 }
             }
             return forwardDist * downwardDist
@@ -31,12 +31,12 @@ class Day02 {
                 val (dir, dist) = line.split(" ")
 
                 when (Direction.valueOf(dir)) {
-                    Direction.forward -> {
+                    Direction.Forward -> {
                         forwardDist += dist.toInt()
                         downwardDist += dist.toInt() * aim
                     }
-                    Direction.up -> aim -= dist.toInt()
-                    Direction.down -> aim += dist.toInt()
+                    Direction.Up -> aim -= dist.toInt()
+                    Direction.Down -> aim += dist.toInt()
                 }
             }
             return forwardDist * downwardDist
