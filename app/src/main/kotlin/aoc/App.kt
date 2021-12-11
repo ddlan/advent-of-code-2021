@@ -9,7 +9,7 @@ fun main() {
 
     println("Working Directory = $path")
 
-    val input = readInput("Day03")
-    println(Day03.part1(input))
-    println(Day03.part2(input))
+    val input = readInput("Day06")
+    println(Day06.part1(input))
+    println(Day06.part2(input))
 }
