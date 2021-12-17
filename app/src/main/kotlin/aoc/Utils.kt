@@ -14,7 +14,7 @@ fun readInput(name: String) = File("app/src/main/resources", "$name.txt").readLi
  */
 fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
 
-const val logEnabled = false
+const val logEnabled = true
 
 fun printLog(text: String) {
     if (logEnabled) println(text)
