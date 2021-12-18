@@ -4,7 +4,7 @@
 package aoc
 
 fun main() {
-    val input = readInput("Day17")
-    println(Day17.part1(input))
-    println(Day17.part2(input))
+    val input = readInput("Day18")
+    println(Day18.part1(input))
+    println(Day18.part2(input))
 }
