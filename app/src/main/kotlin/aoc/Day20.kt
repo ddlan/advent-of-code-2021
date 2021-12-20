@@ -15,15 +15,20 @@ class Day20 {
             return grid.map { line -> line.map { it }.toMutableList() }.toMutableList()
         }
 
-        private fun enhance(grid: List<List<Char>>, enhancement: List<Char>): MutableList<MutableList<Char>> {
+        private fun enhance(grid: List<List<Char>>, enhancement: List<Char>, newChar: Char): MutableList<MutableList<Char>> {
+            fun inGrid(y: Int, x: Int): Boolean {
+                return y in 0..grid.lastIndex && x in 0..grid.first().lastIndex
+            }
+
             val gridCopy = copyGrid(grid)
 
-            for (i in 1 until grid.size-1) {
-                for (j in 1 until grid.first().size-1) {
+            for (i in 0..grid.lastIndex) {
+                for (j in 0..grid.first().lastIndex) {
                     var binNum = 0
                     for (k in i+1 downTo i-1) {
                         for (l in j+1 downTo j-1) {
-                            if (grid[k][l] == '#') {
+                            val char = if (inGrid(k, l)) grid[k][l] else newChar
+                            if (char == '#') {
                                 binNum += 2.0.pow(((i+1-k) * 3 + (j+1-l)).toDouble()).toInt()
                             }
                         }
@@ -51,27 +56,26 @@ class Day20 {
             val (enhancement, grid) = readInput(input)
 
             var currGrid = grid
-            for (i in 0 until 2 ) {
+            for (i in 0 until 2) {
                 val newChar = if (enhancement[0] == '#' && i % 2 == 1) '#' else '.'
                 widen(currGrid, newChar)
-
-//                for (line in currGrid) {
-//                    println(line)
-//                }
-
-                currGrid = enhance(currGrid, enhancement)
-
-            }
-
-            for (line in currGrid) {
-                println(line)
+                currGrid = enhance(currGrid, enhancement, newChar)
             }
 
             return currGrid.fold(0) { gacc, line -> gacc + line.fold(0) { lacc, char -> lacc + if (char == '#') 1 else 0 } }
         }
 
         fun part2(input: List<String>): Int {
-            return input.size
+            val (enhancement, grid) = readInput(input)
+
+            var currGrid = grid
+            for (i in 0 until 50) {
+                val newChar = if (enhancement[0] == '#' && i % 2 == 1) '#' else '.'
+                widen(currGrid, newChar)
+                currGrid = enhance(currGrid, enhancement, newChar)
+            }
+
+            return currGrid.fold(0) { gacc, line -> gacc + line.fold(0) { lacc, char -> lacc + if (char == '#') 1 else 0 } }
         }
     }
 }
