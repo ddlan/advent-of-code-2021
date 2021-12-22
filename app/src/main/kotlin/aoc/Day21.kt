@@ -104,8 +104,6 @@ class Day21 {
             val (p1Pos, p2Pos) = input.map{ it.split(' ').last().toInt()}
             val game = Game2()
             val (p1Wins, p2Wins) = game.play(State(true, p1Pos-1, p2Pos-1, 0, 0))
-//            val(p1Wins, p2Wins)= game.play2(Pair(Pair(p1Pos, 0), Pair(p2Pos, 0)), true)
-//            println("universes ${game.universes}")
             return max(p1Wins, p2Wins)
         }
     }
